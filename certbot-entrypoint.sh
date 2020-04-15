@@ -8,6 +8,7 @@ case $1 in
 certonly)
     shift
     certbot \
+        certonly \
         --manual \
         --preferred-challenges dns \
         --manual-auth-hook "$AUTH_HOOK" \

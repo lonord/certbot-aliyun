@@ -7,7 +7,7 @@
 #PHP 命令行路径，如果有需要可以修改 
 phpcmd="/usr/bin/php"
 #Python 命令行路径，如果有需要可以修改 
-pythoncmd="/usr/bin/python"
+pythoncmd="/usr/local/bin/python"
 
 #填写阿里云的AccessKey ID及AccessKey Secret
 #如何申请见https://help.aliyun.com/knowledge_detail/38738.html
