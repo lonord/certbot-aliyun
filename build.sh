@@ -6,11 +6,13 @@ if [ -z "$TAG_PREFIX" ]; then
     exit 1
 fi
 
-docker build --build-arg TARGET_ARCH=amd64 -t $TAG_PREFIX/certbot:amd64-latest . --push
-docker build --build-arg TARGET_ARCH=arm64v8 -t $TAG_PREFIX/certbot:arm64-latest . --push
+IMAGE_NAME=certbot-aliyun
 
-docker manifest create $TAG_PREFIX/certbot:latest $TAG_PREFIX/certbot:amd64-latest $TAG_PREFIX/certbot:arm64-latest
-docker manifest annotate --arch amd64 $TAG_PREFIX/certbot:latest $TAG_PREFIX/certbot:amd64-latest
-docker manifest annotate --arch arm64 $TAG_PREFIX/certbot:latest $TAG_PREFIX/certbot:arm64-latest
+docker build --build-arg TARGET_ARCH=amd64 -t $TAG_PREFIX/$IMAGE_NAME:amd64-latest . --push
+docker build --build-arg TARGET_ARCH=arm64v8 -t $TAG_PREFIX/$IMAGE_NAME:arm64-latest . --push
 
-docker manifest push -p $TAG_PREFIX/certbot:latest
+docker manifest create $TAG_PREFIX/$IMAGE_NAME:latest $TAG_PREFIX/$IMAGE_NAME:amd64-latest $TAG_PREFIX/$IMAGE_NAME:arm64-latest
+docker manifest annotate --arch amd64 $TAG_PREFIX/$IMAGE_NAME:latest $TAG_PREFIX/$IMAGE_NAME:amd64-latest
+docker manifest annotate --arch arm64 $TAG_PREFIX/$IMAGE_NAME:latest $TAG_PREFIX/$IMAGE_NAME:arm64-latest
+
+docker manifest push -p $TAG_PREFIX/$IMAGE_NAME:latest
