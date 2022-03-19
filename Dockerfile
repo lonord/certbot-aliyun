@@ -1,6 +1,6 @@
 # Docker Arch (amd64, arm32v6, ...)
 ARG TARGET_ARCH
-FROM mh416ghx.mirror.aliyuncs.com/certbot/certbot:${TARGET_ARCH}-latest
+FROM certbot/certbot:${TARGET_ARCH}-latest
 
 VOLUME /etc/letsencrypt
 
